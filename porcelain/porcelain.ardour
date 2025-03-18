@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Session version="7003" name="porcelain" sample-rate="48000" session-range-is-free="1" id-counter="279157" rg-counter="501" name-counter="2" event-counter="95193263" vca-counter="1">
+<Session version="7003" name="porcelain" sample-rate="48000" session-range-is-free="1" id-counter="373155" rg-counter="554" name-counter="2" event-counter="95250781" vca-counter="1">
   <ProgramVersion created-with="Ardour 8.11" modified-with="Ardour 8.12"/>
   <MIDIPorts>
     <Port name="Cue Control in" type="midi" direction="Input"/>
@@ -7,13 +7,15 @@
       <ExtConnection for="JACK"/>
     </Port>
     <Port name="MMC in" type="midi" direction="Input"/>
-    <Port name="MMC out" type="midi" direction="Output"/>
-    <Port name="MTC out" type="midi" direction="Output"/>
+    <Port name="MMC out" type="midi" direction="Output">
+      <ExtConnection for="JACK"/>
+    </Port>
+    <Port name="MTC out" type="midi" direction="Output">
+      <ExtConnection for="JACK"/>
+    </Port>
     <Port name="Scene in" type="midi" direction="Input"/>
     <Port name="Scene out" type="midi" direction="Output"/>
-    <Port name="x-virtual-keyboard" type="midi" direction="Output">
-      <Connection other="Bass0/midi_in 1"/>
-    </Port>
+    <Port name="x-virtual-keyboard" type="midi" direction="Output"/>
   </MIDIPorts>
   <Config>
     <Option name="use-region-fades" value="1"/>
@@ -426,7 +428,9 @@ a376320 1
     <CompoundAssociation copy="76878" original="39293"/>
     <CompoundAssociation copy="76895" original="39345"/>
   </CompoundAssociations>
-  <Selection/>
+  <Selection>
+    <StripableAutomationControl stripable="4323" control="0" order="1"/>
+  </Selection>
   <Locations>
     <Location id="1960" name="session" start="b0" end="b614433" flags="IsSessionRange" locked="0" timestamp="1740162072" cue="0"/>
     <Location id="13743" name="Loop" start="b0" end="b424447" flags="IsAutoLoop" locked="0" timestamp="1740172190" cue="0"/>
@@ -457,10 +461,14 @@ a376320 1
       </IO>
       <IO name="Master" id="100" direction="Output" default-type="audio">
         <Port name="Master/audio_out 1" type="audio" direction="Output">
+          <ExtConnection for="ALSA;;HDA Intel PCH"/>
+          <ExtConnection for="ALSA;;HDA Intel PCH" other="system:playback_1"/>
           <ExtConnection for="JACK"/>
           <ExtConnection for="JACK" other="Volt 476 Analog Surround 4.0:playback_FL"/>
         </Port>
         <Port name="Master/audio_out 2" type="audio" direction="Output">
+          <ExtConnection for="ALSA;;HDA Intel PCH"/>
+          <ExtConnection for="ALSA;;HDA Intel PCH" other="system:playback_2"/>
           <ExtConnection for="JACK"/>
           <ExtConnection for="JACK" other="Volt 476 Analog Surround 4.0:playback_FR"/>
         </Port>
@@ -545,7 +553,6 @@ a376320 1
       <Controllable name="solo-safe" id="220" flags="Toggle" value="0" solo-safe="0"/>
       <IO name="Bass0" id="232" direction="Input" default-type="midi">
         <Port name="Bass0/midi_in 1" type="midi" direction="Input">
-          <Connection other="x-virtual-keyboard"/>
           <ExtConnection for="JACK"/>
         </Port>
       </IO>
@@ -1187,7 +1194,7 @@ a376320 1
           <Channelmap type="audio" from="1" to="1"/>
         </OutputMap-0>
         <ThruMap/>
-        <vst3 last-preset-uri="VST3-S:ABCDEF019182FAEB566D624153675854:somewhere_green_lead1" last-preset-label="somewhere_green_lead1" parameter-changed-since-last-preset="0">
+        <vst3 last-preset-uri="VST3-S:ABCDEF019182FAEB566D624153675854:porcelain_bass0" last-preset-label="porcelain_bass0" parameter-changed-since-last-preset="0">
           <Port id="825615485" value="0"/>
           <Port id="825615486" value="0"/>
           <Port id="825615487" value="0"/>
@@ -2912,6 +2919,7 @@ a376320 1
       <IO name="Lead0" id="4384" direction="Input" default-type="midi">
         <Port name="Lead0/midi_in 1" type="midi" direction="Input">
           <ExtConnection for="JACK"/>
+          <ExtConnection for="JACK" other="Midi-Bridge:Launchpad Pro MK3 LPProMK3 MIDI (capture)"/>
         </Port>
       </IO>
       <IO name="Lead0" id="4385" direction="Output" default-type="midi">
@@ -7676,9 +7684,13 @@ a376320 1
   <Click>
     <IO name="Click" id="68" direction="Output" default-type="audio">
       <Port name="Click/audio_out 1" type="audio" direction="Output">
+        <ExtConnection for="ALSA;;HDA Intel PCH"/>
+        <ExtConnection for="ALSA;;HDA Intel PCH" other="system:playback_1"/>
         <ExtConnection for="JACK"/>
       </Port>
       <Port name="Click/audio_out 2" type="audio" direction="Output">
+        <ExtConnection for="ALSA;;HDA Intel PCH"/>
+        <ExtConnection for="ALSA;;HDA Intel PCH" other="system:playback_2"/>
         <ExtConnection for="JACK"/>
       </Port>
     </IO>
@@ -7710,13 +7722,12 @@ a376320 1
     <Protocol name="Novation Launch Control XL" active="0" session-state="0"/>
     <Protocol name="Novation LaunchKey 4" active="0" session-state="0"/>
     <Protocol name="Novation LaunchPad Mini" active="0" session-state="0"/>
-    <Protocol name="Novation LaunchPad Pro" feedback="0" active="0" session-state="0">
+    <Protocol name="Novation LaunchPad Pro" feedback="0" active="0">
       <Input>
         <Port name="LaunchPad Pro in" type="midi" direction="Input">
           <ExtConnection for="ALSA;;HDA Intel PCH"/>
           <ExtConnection for="ALSA;;HDA Intel PCH" other="system:midi_capture_11e55590"/>
           <ExtConnection for="JACK"/>
-          <ExtConnection for="JACK" other="Midi-Bridge:Launchpad Pro MK3 LPProMK3 DAW (capture)"/>
           <ExtConnection for="JACK" other="Midi-Bridge:Launchpad Pro MK3 LPProMK3 MIDI (capture)"/>
         </Port>
       </Input>
@@ -7725,22 +7736,17 @@ a376320 1
           <ExtConnection for="ALSA;;HDA Intel PCH"/>
           <ExtConnection for="ALSA;;HDA Intel PCH" other="system:midi_playback_11e55590"/>
           <ExtConnection for="JACK"/>
-          <ExtConnection for="JACK" other="Midi-Bridge:Launchpad Pro MK3 LPProMK3 DAW (playback)"/>
           <ExtConnection for="JACK" other="Midi-Bridge:Launchpad Pro MK3 LPProMK3 MIDI (playback)"/>
         </Port>
       </Output>
       <DAWInput>
         <Port name="LaunchPad Pro daw in" type="midi" direction="Input">
-          <ExtConnection for="ALSA;;HDA Intel PCH"/>
-          <ExtConnection for="ALSA;;HDA Intel PCH" other="system:midi_capture_f0806190"/>
           <ExtConnection for="JACK"/>
           <ExtConnection for="JACK" other="Midi-Bridge:Launchpad Pro MK3 LPProMK3 DAW (capture)"/>
         </Port>
       </DAWInput>
       <DAWOutput>
         <Port name="LaunchPad Pro daw out" type="midi" direction="Output">
-          <ExtConnection for="ALSA;;HDA Intel PCH"/>
-          <ExtConnection for="ALSA;;HDA Intel PCH" other="system:midi_playback_f0806190"/>
           <ExtConnection for="JACK"/>
           <ExtConnection for="JACK" other="Midi-Bridge:Launchpad Pro MK3 LPProMK3 DAW (playback)"/>
         </Port>
@@ -7784,7 +7790,7 @@ a376320 1
       <Window name="session-options-editor" visible="0" x-off="0" y-off="195" x-size="818" y-size="483"/>
       <Window name="speaker-config" visible="0" x-off="-1" y-off="-1" x-size="-1" y-size="-1"/>
       <Window name="about" visible="0" x-off="-1" y-off="-1" x-size="-1" y-size="-1"/>
-      <Window name="add-routes" visible="0" x-off="-1" y-off="-1" x-size="675" y-size="491"/>
+      <Window name="add-routes" visible="0" x-off="-1" y-off="-1" x-size="855" y-size="515"/>
       <Window name="add-video" visible="0" x-off="-1" y-off="-1" x-size="-1" y-size="-1"/>
       <Window name="inspector" visible="0" x-off="123" y-off="223" x-size="620" y-size="370"/>
       <Window name="audio-midi-setup" visible="0" x-off="-1" y-off="-1" x-size="-1" y-size="-1"/>
@@ -7797,12 +7803,12 @@ a376320 1
       <Window name="virtual-keyboard" visible="0" x-off="-1" y-off="-1" x-size="-1" y-size="-1"/>
       <Window name="library-downloader" visible="0" x-off="-1" y-off="-1" x-size="-1" y-size="-1"/>
       <Window name="audio-connection-manager" visible="0" x-off="-1" y-off="-1" x-size="-1" y-size="-1"/>
-      <Window name="midi-connection-manager" visible="0" x-off="55" y-off="108" x-size="577" y-size="466"/>
+      <Window name="midi-connection-manager" visible="0" x-off="55" y-off="108" x-size="583" y-size="556"/>
       <Window name="luawindow" visible="0" x-off="-1" y-off="-1" x-size="-1" y-size="-1"/>
       <Window name="idle-o-meter" visible="0" x-off="-1" y-off="-1" x-size="-1" y-size="-1"/>
       <Window name="io-plugins" visible="0" x-off="-1" y-off="-1" x-size="-1" y-size="-1"/>
       <Window name="plugin-manager" visible="0" x-off="723" y-off="338" x-size="1057" y-size="600"/>
-      <Window name="plugin-dsp-load" visible="0" x-off="-1" y-off="-1" x-size="-1" y-size="-1"/>
+      <Window name="plugin-dsp-load" visible="0" x-off="350" y-off="545" x-size="609" y-size="446"/>
       <Window name="dsp-statistics" visible="0" x-off="-1" y-off="-1" x-size="-1" y-size="-1"/>
       <Window name="transport-masters" visible="0" x-off="-1" y-off="-1" x-size="-1" y-size="-1"/>
       <Window name="RPM-71" visible="0" x-off="-1" y-off="-1" x-size="-1" y-size="-1"/>
@@ -7813,13 +7819,13 @@ a376320 1
       <Window name="RPM-13748" visible="0" x-off="-1" y-off="-1" x-size="-1" y-size="-1"/>
       <Window name="P-71-109504" visible="0" x-off="1141" y-off="398" x-size="384" y-size="228" custom-ui="1"/>
       <Window name="PM-71-109504" visible="0" x-off="-1" y-off="-1" x-size="-1" y-size="-1"/>
-      <Window name="P-171-272" visible="0" x-off="-1" y-off="-1" x-size="-1" y-size="-1" custom-ui="1"/>
+      <Window name="P-171-272" visible="0" x-off="411" y-off="0" x-size="1142" y-size="750" custom-ui="1"/>
       <Window name="PM-171-272" visible="0" x-off="-1" y-off="-1" x-size="-1" y-size="-1"/>
       <Window name="P-1834-1941" visible="0" x-off="-1" y-off="-1" x-size="-1" y-size="-1" custom-ui="1"/>
       <Window name="PM-1834-1941" visible="0" x-off="-1" y-off="-1" x-size="-1" y-size="-1"/>
-      <Window name="P-4323-4436" visible="0" x-off="-1" y-off="-1" x-size="-1" y-size="-1" custom-ui="1"/>
+      <Window name="P-4323-4436" visible="0" x-off="411" y-off="0" x-size="1142" y-size="750" custom-ui="1"/>
       <Window name="PM-4323-4436" visible="0" x-off="-1" y-off="-1" x-size="-1" y-size="-1"/>
-      <Window name="P-14014-14140" visible="0" x-off="-1" y-off="-1" x-size="-1" y-size="-1" custom-ui="1"/>
+      <Window name="P-14014-14140" visible="0" x-off="411" y-off="0" x-size="1142" y-size="750" custom-ui="1"/>
       <Window name="PM-14014-14140" visible="0" x-off="-1" y-off="-1" x-size="-1" y-size="-1"/>
       <Window name="P-13748-93182" visible="0" x-off="-1" y-off="-1" x-size="-1" y-size="-1" custom-ui="1"/>
       <Window name="PM-13748-93182" visible="0" x-off="-1" y-off="-1" x-size="-1" y-size="-1"/>
@@ -8165,7 +8171,7 @@ a376320 1
   </Extra>
   <Script lua="Lua 5.3">c2NyaXB0cyA9IHt9IA==</Script>
   <MixerScenes n_scenes="3">
-    <MixerScene id="271265" name="normal" index="0">
+    <MixerScene id="365263" name="normal" index="0">
       <ControlValue id="67" value="0.44548574090003967"/>
       <ControlValue id="75" value="1"/>
       <ControlValue id="77" value="1"/>
@@ -10738,7 +10744,7 @@ a376320 1
       <ControlValue id="46137" value="0"/>
       <ControlValue id="46143" value="0"/>
     </MixerScene>
-    <MixerScene id="273837" name="record-audio+midi" index="1">
+    <MixerScene id="367835" name="record-audio+midi" index="1">
       <ControlValue id="67" value="0.44548574090003967"/>
       <ControlValue id="75" value="1"/>
       <ControlValue id="77" value="1"/>
@@ -13247,7 +13253,7 @@ a376320 1
       <ControlValue id="59039" value="0"/>
       <ControlValue id="59041" value="0"/>
     </MixerScene>
-    <MixerScene id="276345" name="playback-recordings" index="2">
+    <MixerScene id="370343" name="playback-recordings" index="2">
       <ControlValue id="67" value="0.44548574090003967"/>
       <ControlValue id="75" value="1"/>
       <ControlValue id="77" value="1"/>
